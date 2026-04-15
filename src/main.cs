@@ -8,13 +8,19 @@ class Program{
 
         Init();
 
+        try{
+            while(true){
 
-        while(true){
+                if(Console.KeyAvailable && Console.ReadKey(true).KeyChar == 'Q'){
+                    break;
+                }
+                
+                Renderer.Text_Left("Ball", Console.WindowWidth - 2, 5, ConsoleColor.Cyan);
 
-            if(Console.KeyAvailable && Console.ReadKey(true).KeyChar == 'Q'){
-                break;
             }
-
+        } 
+        catch(Exception ex){
+            Console.WriteLine(ex.Message);
         }
         
         Cleanup();
@@ -22,14 +28,15 @@ class Program{
     }
 
 
-    static void Init(){
+    public static void Init(){
 
         Console.Clear();
         Console.CursorVisible = false;
 
     }
-    static void Cleanup(){
+    public static void Cleanup(){
 
+        Console.ResetColor();
         Console.Clear();
         Console.CursorVisible = true;
 
